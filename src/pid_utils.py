@@ -24,3 +24,14 @@ class pidControl:
         self.prev_error = error
 
         return output
+    
+    
+    
+        def get_output(self, target_value, current_value):
+        error = target_value-current_value
+        self.integral_error += error*self.sampling_time
+        derivative_error = (error-self.previous_error)/self.sampling_time
+
+        output = self.p_gain*error + self.i_gain*self.integral_error + self.d_gain*derivative_error
+        self.previous_error = error
+        return output
