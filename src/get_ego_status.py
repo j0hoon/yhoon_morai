@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import os
 import rospy
 from morai_msgs.msg import EgoVehicleStatus
 # Ego_status_listener 는 시뮬레이터에서 송신하는 Ego 차량 정보를 Subscriber 하는 예제 입니다.
@@ -13,6 +14,7 @@ from morai_msgs.msg import EgoVehicleStatus
 
 #TODO: (3) Callback 함수 생성 및 데이터 출력
 def EgoStatus_callback(data):
+    os.system('clear')
     rospy.loginfo('------------------Ego Vehicle Status------------------')
     rospy.loginfo('position     : x = {0} , y = {1}, z = {2}'.format(data.position.x,data.position.y,data.position.z))
     rospy.loginfo('velocity     : x = {0} , y = {1}, z = {2} m/s^2'.format(data.velocity.x,data.velocity.y,data.velocity.z))

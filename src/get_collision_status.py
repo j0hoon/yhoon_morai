@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import os
 import rospy
 from morai_msgs.msg import CollisionData
 
@@ -14,7 +15,11 @@ from morai_msgs.msg import CollisionData
 
 #TODO: (3) Callback 함수 생성 및 데이터 출력
 def Collision_callback(data):
-    rospy.loginfo(data)
+    os.system('clear')
+    for i in range(len(data.collision_object)) :
+        rospy.loginfo('--------------------Num {}-------------------------'.format(i))
+        rospy.loginfo('Collision Object Name : {}'.format(data.collision_object[i].name))
+        rospy.loginfo('position     : x = {0} , y = {1}, z = {2}'.format(data.collision_object[i].position.x,data.collision_object[i].position.y,data.collision_object[i].position.z))
 
 def listener():
     #TODO: (1) ROS 노드 이름 선언

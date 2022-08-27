@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import os
 import rospy
 from morai_msgs.msg import ObjectStatusList
 
@@ -14,7 +15,7 @@ from morai_msgs.msg import ObjectStatusList
 
 #TODO: (3) Callback 함수 생성 및 데이터 출력
 def Object_callback(data):
-    print("===========================================================================")
+    os.system('clear')
     rospy.loginfo('-------------------- NPC Vehicle -------------------------')
     rospy.loginfo('NPC num :{}'.format(data.num_of_npcs))
     for i in range(data.num_of_npcs) :
@@ -26,7 +27,7 @@ def Object_callback(data):
         rospy.loginfo('heading      : {} deg'.format(data.npc_list[i].heading))
         rospy.loginfo('size         : x = {0} , y = {1}, z = {2} m'.format(data.npc_list[i].size.x,data.npc_list[i].size.y,data.npc_list[i].size.z))
     rospy.loginfo('-------------------- Pedestrian -------------------------')
-    rospy.loginfo('NPC num :{}'.format(data.num_of_pedestrian))
+    rospy.loginfo('Pedestrian num :{}'.format(data.num_of_pedestrian))
     for i in range(data.num_of_pedestrian) :
         rospy.loginfo('--------------------Num {}-------------------------'.format(i))
         rospy.loginfo('name : {}'.format(data.pedestrian_list[i].name))
@@ -36,7 +37,7 @@ def Object_callback(data):
         rospy.loginfo('heading      : {} deg'.format(data.pedestrian_list[i].heading))
         rospy.loginfo('size         : x = {0} , y = {1}, z = {2} m'.format(data.pedestrian_list[i].size.x,data.pedestrian_list[i].size.y,data.pedestrian_list[i].size.z))
     rospy.loginfo('-------------------- Obstacle -------------------------')
-    rospy.loginfo('NPC num :{}'.format(data.num_of_obstacle))
+    rospy.loginfo('Obstacle num :{}'.format(data.num_of_obstacle))
     for i in range(data.num_of_obstacle) :
         rospy.loginfo('--------------------Num {}-------------------------'.format(i))
         rospy.loginfo('name : {}'.format(data.obstacle_list[i].name))

@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import os
 import rospy
 from morai_msgs.msg import GPSMessage
 
@@ -12,7 +13,8 @@ from morai_msgs.msg import GPSMessage
 
 #TODO: (1) Callback 함수 생성 및 데이터 출력
 def gps_callback(data):
-    print("\n ------------------------------------ \n")
+    os.system('clear')
+    rospy.loginfo('------------------ GPS Sensor Status ------------------')
     rospy.loginfo("latitude {}".format(data.latitude))
     rospy.loginfo("longitude {}".format(data.longitude))
     rospy.loginfo("eastOffset {}".format(data.eastOffset))

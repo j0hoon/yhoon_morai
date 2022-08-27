@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import os
 import rospy
 from morai_msgs.msg import GetTrafficLightStatus
 
@@ -14,6 +15,8 @@ from morai_msgs.msg import GetTrafficLightStatus
 
 #TODO: (3) Callback 함수 생성 및 데이터 출력
 def traffic_light_callback(data):
+    os.system('clear')
+    rospy.loginfo('-------------------- Traffic Light Vehicle -------------------------')
     rospy.loginfo("Traffic Light Idx    : {}".format(data.trafficLightIndex))
     rospy.loginfo("Traffic Light Status : {}".format(data.trafficLightStatus))
     rospy.loginfo("Traffic Light Type   : {}".format(data.trafficLightType))
